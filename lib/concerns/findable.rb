@@ -4,6 +4,6 @@ module Concerns::Findable
   end
 
   def find_or_create_by_name(name)
-    find_by_name(name) ? find_by_name(name) : selfcreate(name)#need to be generic, no self.
+    find_by_name(name) ? find_by_name(name) : self.create(name)#need to be generic, no self.
   end
 end
