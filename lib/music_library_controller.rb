@@ -78,15 +78,12 @@ end
 end
 
 def play_song
-  puts "Which song number would you like to play?"
-  input = gets.strip
-   if (1..Song.all.length).include?(input.to_i)
-     song = Song.all.uniq.select_by(input.to_i - 1)
+puts "Which song number would you like to play?"
+user = gets.strip
+if user.to_i.between?(1, Song.all.length)
+song = Song.sorted[user.to_i - 1]
+puts "Playing #{song.name} by #{song.artist.name}"
+end
+end
+end
 
-      # song = Song.all.sort_by(&:name).each.with_index(input.to_i - 1)
-end
-     binding.pry
-  puts "Playing #{song.name} by #{song.artist.name}"
-end
-end
-end
