@@ -82,7 +82,8 @@ def play_song
   input = gets.strip
    if (1..Song.all.length).include?(input.to_i)
     #  song = Song.all.sort_by(&:name).each.with_index(input.to_i - 1)
-     song = Song.all.sort{|song| song.name = song}[input.to_i - 1]
+     Song.all.sort |song| do
+       song.name(input.to_i - 1)
 
      binding.pry
   puts "Playing #{song.name} by #{song.artist.name}"
