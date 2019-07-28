@@ -1,10 +1,10 @@
 class Artist
-  extend Concerns::Findable
+
+extend Concerns::Findable
 
 
   attr_accessor :name
   attr_reader :songs
-
 
   @@all = []
 
@@ -22,9 +22,9 @@ class Artist
     self.class.all << self
   end
 
-  def self.create(artist)
-    self.new(artist)
-  end
+   def self.create(artist)
+     self.new(artist)
+   end
 
   def self.destroy_all
     all.clear
