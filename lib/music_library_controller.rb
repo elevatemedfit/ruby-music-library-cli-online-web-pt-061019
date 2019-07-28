@@ -73,17 +73,14 @@ def list_songs_by_genre
   if genre = Genre.find_by_name(input)
     genre.songs.uniq.sort_by(&:name).each.with_index(1) do |song, idx|
       puts "#{idx}. #{song.artist.name} - #{song.name}"
+    end
 end
-end
-  end
 
-    def play_song
-input = ""
-puts "Which song number would you like to play?"
- input = gets.strip
+def play_song
+  puts "Which song number would you like to play?"
+  input = gets.strip
    if (1..Song.all.length).include?(input.to_i)
-  #  song = Song.all.sort_by(&:name)[input.to_i - 1]
-song = Song.all.sort{|a,b| a.name <=> b.name}[input.to_i - 1]
+     song = Song.all.sort{|a,b| a.name <=> b.name}[input.to_i - 1]
   puts "Playing #{song.name} by #{song.artist.name}"
 end
 end
