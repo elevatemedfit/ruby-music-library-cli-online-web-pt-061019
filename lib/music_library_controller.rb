@@ -81,7 +81,8 @@ def play_song
   puts "Which song number would you like to play?"
   input = gets.strip
    if (1..Song.all.length).include?(input.to_i)
-     song = Song.all.sort{|a,b| a.name <=> b.name}[input.to_i - 1]
+     Song.all.uniq.sort_by(&:name).each.with_index(input.to_i - 1)
+     #song = Song.all.sort{|a,b| a.name <=> b.name}[input.to_i - 1]
   puts "Playing #{song.name} by #{song.artist.name}"
 end
 end
