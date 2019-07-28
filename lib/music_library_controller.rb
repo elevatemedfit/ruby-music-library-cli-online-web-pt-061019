@@ -80,7 +80,7 @@ class MusicLibraryController
 
   def play_song
     puts "Which song number would you like to play?"
-    song_number = gets.strip
+    song_number = gets.strip.to_i
     if song_number.to_i.between?(1, Song.all.length)
       song = list_songs[song_number.to_i]
       puts "Playing #{song.name} by #{song.artist.name}"
