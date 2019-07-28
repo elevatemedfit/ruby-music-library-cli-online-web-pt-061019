@@ -21,9 +21,9 @@ end
    self.class.all << self
  end
 
- def self.create(genre)
-    self.new(genre)
- end
+ # def self.create(genre)
+ #    self.new(genre)
+ # end
 
  def self.destroy_all
    all.clear
