@@ -42,47 +42,48 @@ class MusicLibraryController
   def list_songs
     Song.all.uniq.sort_by(&:name).each.with_index(1) do |song, idx|
       puts "#{idx}. #{song.artist.name} - #{song.name} - #{song.genre.name}"
+    end
   end
-end
+
   def list_artists
     Artist.all.uniq.sort_by(&:name).each.with_index(1) do |artist, idx|
       puts "#{idx}. #{artist.name}"
-  end
-end
-def list_genres
-  Genre.all.uniq.sort_by(&:name).each.with_index(1) do |genre, idx|
-    puts "#{idx}. #{genre.name}"
-end
-end
-
-def list_songs_by_artist
-  input = ""
-  puts "Please enter the name of an artist:"
-  input = gets.strip
-  if artist = Artist.find_by_name(input)
-    artist.songs.sort_by(&:name).each.with_index(1) do |song, idx|
-      puts "#{idx}. #{song.name} - #{song.genre.name}"
-
-  end
-end
-end
-def list_songs_by_genre
-  input = ""
-  puts "Please enter the name of a genre:"
-  input = gets.strip
-  if genre = Genre.find_by_name(input)
-    genre.songs.uniq.sort_by(&:name).each.with_index(1) do |song, idx|
-      puts "#{idx}. #{song.artist.name} - #{song.name}"
     end
-end
-end
+  end
 
-def play_song
-puts "Which song number would you like to play?"
-user = gets.strip
-if user.to_i.between?(1, Song.all.length)
-song = Song.all.sort_by[user.to_i - 1]
-puts "Playing #{song.name} by #{song.artist.name}"
-end
-end
+  def list_genres
+    Genre.all.uniq.sort_by(&:name).each.with_index(1) do |genre, idx|
+      puts "#{idx}. #{genre.name}"
+    end
+  end
+
+  def list_songs_by_artist
+    input = ""
+    puts "Please enter the name of an artist:"
+    input = gets.strip
+    if artist = Artist.find_by_name(input)
+      artist.songs.sort_by(&:name).each.with_index(1) do |song, idx|
+        puts "#{idx}. #{song.name} - #{song.genre.name}"
+      end
+    end
+  end
+  def list_songs_by_genre
+    input = ""
+    puts "Please enter the name of a genre:"
+    input = gets.strip
+    if genre = Genre.find_by_name(input)
+      genre.songs.uniq.sort_by(&:name).each.with_index(1) do |song, idx|
+        puts "#{idx}. #{song.artist.name} - #{song.name}"
+      end
+    end
+  end
+
+  def play_song
+    puts "Which song number would you like to play?"
+    user = gets.strip
+    if user.to_i.between?(1, Song.all.length)
+      song = Song.all.sort_by[user.to_i - 1]
+      puts "Playing #{song.name} by #{song.artist.name}"
+    end
+  end
 end
